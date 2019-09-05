@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Your base production configuration goes in this file. Environment-specific
  * overrides go in their respective config/environments/{{WP_ENV}}.php file.
@@ -123,3 +124,37 @@ Config::apply();
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+/**
+ * Use municipio as default theme.
+ * @var string
+ */
+define('WP_DEFAULT_THEME', 'municipio');
+
+/**
+ * Limit number of post revisions per post
+ * @var integer
+ */
+define('WP_POST_REVISIONS', 10);
+
+/**
+ * Set the autosave interval
+ * @default: 60 seconds
+ * @var integer
+ */
+define('AUTOSAVE_INTERVAL', 120);
+
+/**
+ * Change the time interval for how often the trash will empty itself
+ * @default: 30 days
+ * @var integer
+ */
+define('EMPTY_TRASH_DAYS', 30);
+
+/**
+ * Disable the WordPress theme/plugin editor
+ */
+define('DISALLOW_FILE_EDIT', true);
+
+
+define('MUNICIPIO_STYLEGUIDE_URI', '//helsingborg-stad.github.io/styleguide-web/dist/');

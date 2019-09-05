@@ -1,37 +1,40 @@
 {
-  "name": "roots/bedrock",
+  "name": "helsingborg-stad/lemp-techfestival",
   "type": "project",
   "license": "MIT",
-  "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
-  "homepage": "https://roots.io/bedrock/",
+  "homepage": "https://github.com/helsingborg-stad",
   "authors": [
     {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
-    },
-    {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
+      "name": "Nikolas Ramstedt",
+      "email": "nikolas.ramstedt@helsingborg.se"
     }
   ],
-  "keywords": [
-    "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
-  ],
-  "support": {
-    "issues": "https://github.com/roots/bedrock/issues",
-    "forum": "https://discourse.roots.io/category/bedrock"
-  },
-	"config": {
-		"preferred-install": "dist",
-		"secure-http": false
-	},
   "repositories": [
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org"
-    }
+      {
+          "type":"composer",
+          "url":"https://packagist.org"
+      },
+      {
+          "type":"composer",
+          "url":"https://wpackagist.org"
+      },
+      {
+        "type": "package",
+        "package": {
+          "name": "wp-premium/advanced-custom-fields-pro",
+          "version": "5.8.3",
+          "description": "Advanced Custom Fields Pro, Git-ified. Synced manual! This repository is just a mirror of the Advanced Custom Fields Pro plugin. Please do not send pull requests and issues.",
+          "type": "wordpress-plugin",
+          "require": {
+            "composer/installers": "^1.4"
+          },
+          "source": {
+              "url": "git@github.com:wp-premium/advanced-custom-fields-pro.git",
+              "type": "git",
+              "reference": "master"
+          }
+        }
+      }
   ],
   "require": {
     "php": ">=7.1",
@@ -40,7 +43,49 @@
     "oscarotero/env": "^1.1.0",
     "roots/wordpress": "^5.2.1",
     "roots/wp-config": "1.0.0",
-    "roots/wp-password-bcrypt": "1.0.0"
+    "roots/wp-password-bcrypt": "1.0.0",
+    "helsingborg-stad/modularity": "^2.11",
+    "helsingborg-stad/municipio": ">=1.0.0",
+    "helsingborg-stad/lix-calculator": ">=1.0.1",
+    "helsingborg-stad/custom-short-links": ">=1.0.0",
+    "helsingborg-stad/readspeaker-helper": ">=1.0.0",
+    "helsingborg-stad/content-scheduler": ">=1.0.0",
+    "helsingborg-stad/broken-link-detector": ">=1.0.0",
+    "helsingborg-stad/better-post-ui": ">=1.0.0",
+    "helsingborg-stad/acf-ux-collapse": ">=1.0.0",
+    "helsingborg-stad/api-event-manager-integration": ">=0.1.0",
+    "helsingborg-stad/force-ssl": ">=1.0.0",
+    "helsingborg-stad/search-notices": ">=1.0.0",
+    "helsingborg-stad/wp-search-statistics": ">=0.1.0",
+    "helsingborg-stad/attachment-revisions": ">=1.0.0",
+    "helsingborg-stad/active-directory-api-wp-integration": ">=2.0.0",
+    "helsingborg-stad/easy-to-read-alternative": ">=1.0.0",
+    "helsingborg-stad/multisite-role-propagation": ">=1.0.0",
+    "helsingborg-stad/modularity-form-builder": ">=1.6.4",
+    "helsingborg-stad/wp-page-for-post-type": ">=1.0.0",
+    "helsingborg-stad/api-alarm-integration": ">=1.0.0",
+    "helsingborg-stad/google-analythics": ">=1.0.0",
+    "helsingborg-stad/modularity-guides": ">=2.0.10",
+    "helsingborg-stad/modularity-timeline": ">=1.1.4",
+    "helsingborg-stad/modularity-json-render": ">=1.0.0",
+    "wpackagist-plugin/varnish-http-purge": "^4.1.1",
+    "wpackagist-plugin/stream": "^3.0.4",
+    "wpackagist-plugin/wp-nested-pages": "^3.0.11",
+    "wpackagist-plugin/mce-table-buttons": "^3.0.0",
+    "wpackagist-plugin/user-switching" : ">=1.5.1",
+    "wpackagist-plugin/autodescription" : ">=2.9.0",
+    "wpackagist-plugin/redis-cache": "1.4.3",
+    "wpackagist-plugin/tablepress": "1.9.2",
+    "wpackagist-plugin/username-changer": "3.1.3",
+    "wpackagist-plugin/wp-editor-widget": "0.6.0",
+    "helsingborg-stad/customer-feedback": ">=2.2.18",
+    "helsingborg-stad/algolia-multisite-enabler": "^1.0",
+    "wpackagist-plugin/wp-mail-smtp": "^1.2",
+    "helsingborg-stad/media-usage": "^1.0",
+    "helsingborg-stad/modularity-sections": "^1.3",
+    "wpackagist-plugin/redirection": "^4.3.1",
+    "helsingborg-stad/algoliasearch-wordpress": "^2.11",
+    "wp-premium/advanced-custom-fields-pro": "^5.8"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2",
@@ -55,6 +100,9 @@
     "wordpress-install-dir": "web/wp"
   },
   "scripts": {
+    "post-install-cmd": [
+      "mkdir -p web/app/uploads/cache/blade-cache"
+    ],
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""
     ],
